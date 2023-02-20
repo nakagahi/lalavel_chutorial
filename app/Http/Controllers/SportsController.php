@@ -8,16 +8,14 @@ use Illuminate\Http\Response;
 
 class SportsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
         // DBよりBookテーブルの値を全て取得
-        $books = Sports::all();
+        $sports = Sports::all();
   
         // 取得した値をビュー「book/index」に渡す
-        return view('sports/index', compact('books'));
+        return response() -> json($sports, 200);
     }
 
     /**
